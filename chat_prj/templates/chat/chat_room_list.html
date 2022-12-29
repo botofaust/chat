@@ -1,0 +1,17 @@
+{% extends 'default.html' %}
+
+{% block title %}
+Список чатов
+{% endblock title %}
+
+{% block content %}
+
+{% for chat_room in object_list %}
+    <a href="{% url 'chat_room' chat_room.id %}">{{ chat_room.name }}</a>
+    {% for member in chat_room.members.all %}
+        {{ member.nickname }}
+    {% endfor %}
+    <br>
+{% endfor %}
+
+{% endblock content %}
